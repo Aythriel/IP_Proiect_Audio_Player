@@ -1,0 +1,12 @@
+Entitati:
+-----------------------
+AudioPlayer; contine un System.Media.SoundPlayer si un currentAudioFile -> singleton; de asemenea, volumul audio si ceva metode de a masura progresul cantecului curent / frecvente gen AIMP/Winamp
+AudioFile; contine calea catre cantec si formatul; poate si altceva :-? poate contine validari pentru format-ul fisierelor, pentru a evita exceptiile native System.Media.SoundPlayer
+PlayList; alt singleton; contine o lista de AudioFile
+Visualizer; clasa pentru update-uri vizuale; ruleaza pe un thread separat o metoda de updates
+Convertor de format; folosit de AudioPlayer pentru a converti la .wav orice alt format audio
+
+
+MusicPlayer; Facade pentru intregul subsistem -> instantiat in Form1 si initializeaza restul logicii; expune operatiile de loadSongs(browse_path), Play/Pause(currentSong), chooseSong()
+
+
