@@ -20,9 +20,9 @@
 ## 3.1.2 Hardware Interfaces 
 ## 3.1.3 Software Interfaces 
 ## 3.1.4 Communication Interfaces 
-## 3.2 Functional Requirements 
+## 3.2 Functional Requirements [Cana]
 ## 3.2.n Mode n 3.2.n.m Functional req n.m 
-## 3.3 Performance requirements 
-## 3.4 Design Constraints 
-## 3.5 Attributes 
+## 3.3 Performance requirements [Cana]
+## 3.4 Design Constraints  [Cana]
+## 3.5 Attributes [Cana]
 ## 3.6 Other
