@@ -15,7 +15,20 @@
 
 # 3. Specific Requirements [TODO: Andrei Cana ]
 
+### This is a self contained audio player. Its functionality is to play songs of different supported formats. 
+### The audio player has to be able to create playlists, add songs to them and playback songs in sequential or random mode. 
+### The audio player has to show progress of the current song being played.
+### The audio player has to have a form of visualization for the song - in the form of frequency displays or song-related album art.
+
 ## 3.1External Interface Requirements 
+
+The Audio Player is a self contained system that does not communicate over the internet with any other third party.
+
+All functionality is achieved with the use of the .NET 4.7.2 framework and the open source NAudio library.
+
+NAudio - Audio and MIDI library for .NET
+[GitHub](https://github.com/naudio/NAudio)
+
 ## 3.1.1 User Interfaces 
 ## 3.1.2 Hardware Interfaces 
 ## 3.1.3 Software Interfaces 
