@@ -38,7 +38,7 @@ This software does not have any other dependencies than the operating system and
 ### The audio player has to show progress of the current song being played.
 ### The audio player has to have a form of visualization for the song - in the form of frequency displays or song-related album art.
 
-## 3.1External Interface Requirements 
+## 3.1	External Interface Requirements 
 
 The Audio Player is a self contained system that does not communicate over the internet with any other third party.
 
@@ -48,12 +48,62 @@ NAudio - Audio and MIDI library for .NET
 [GitHub](https://github.com/naudio/NAudio)
 
 ## 3.1.1 User Interfaces 
+
+The program will have one single Form / panel from which all functions will be exposed to the user. A mockup of the design is below. 
+
+![Image of the UI](./interface_mockup.png)
+
+Windows Forms components are used for quick and functional feature implementation. They are, as follows:
+
+* Previous : plays previous song (whether it's previous by index or previous from shuffle)
+* Play: resume playing the current song (if it isn't already playing)
+* Pause: pauses the current song (button is separated from play so that play can be used in the context of a new song
+* Next: plays next song (whether by next index or randomly generated index in the case of shuffle)
+* Shuffle: toggles between playing songs sequentially and randomly 
+* Autoplay Next: toggles between playing next song automatically and not doing that
+
+* About: displays information about the project, its context and authors
+* Help: displays the helpdoc
+
+* Remove Selected: Remove the currently selected song(s) 
+* Add songs: Populate the current playlist by browsing to a folder and reading recursively from it
+* New Playlist: creates a new playlist (that will be persisted as a .txt of the paths to the songs)
+
+
+
 ## 3.1.2 Hardware Interfaces 
+
+The program relies on .NET interfaces with the operating system that expose the audio device driver. It does not communicate directly with any hardware component.
+
 ## 3.1.3 Software Interfaces 
+
+The program uses NuGet package manager for managing its dependencies. This is integrated as an IDE extension and facilitates quick package installation and management.
+
+The program uses NAudio as an extensive .NET audio library. It facilitates encoding, decoding and playback using different engines for multiple file types.
+
 ## 3.1.4 Communication Interfaces 
+
+The app only communicates with the operating system to access the file system when browsing for songs on local storage. This is basic WinForms functionality.
+
 ## 3.2 Functional Requirements 
-## 3.2.n Mode n 3.2.n.m Functional req n.m 
+
+* 3.2.1 The app must be capable of allowing the user to create playlists using local folders with audio files
+* 3.2.2 The app must be capable of ignoring non-audio files when loading the playlist or adding songs
+* 3.2.3 The app must be capable of playing the current song and tracking it's progress
+* 3.2.4 The app must be capable of pausing the current song and unpausing it
+* 3.2.5 The app must be capable of switching to playing a new song while the last one isn't finished
+* 3.2.6 The app must be capable of persisting the user created playlists (i.e. they don't vanish when the app is closed)
+* 3.2.7 The app must be capable of song playback in sequential or shuffle mode
+* 3.2.8 The app must be capable of allowing the user the choice of whether the next song is automatically played
+
 ## 3.3 Performance requirements 
+
+### The app has to be responsive (i.e. the time between a user generated event / click and the action must not be noticeable)
+
 ## 3.4 Design Constraints
-## 3.5 Attributes 
-## 3.6 Other 
+
+None. 
+
+## 3.5 Other
+
+This app is developed as part of a university project, thus the code and all intellectual property is licensed as open source.  
