@@ -8,10 +8,28 @@
 
 # 2. Overall description [TODO: Bogdan Vacariuc]
 ## 2.1 Product Perspective 
+The Audio Player is a desktop application and hence will require an operating system installed on the machine which has to be <b>Windows</b>. 
+It will use .Net 4.7.2 for its development. The package is independent of any other application.
+
 ## 2.2 Product Functions 
+The product is supposed to serve as an audio player, providing a simple mechanism for users to use it. 
+
+The following are the main features that are included in the Audio Player:<br>
+* Accepts a large diversity of sound formats
+* Playlists can be obtained by loading melodies
+* The playlist is listed and any melody can be selected
+* Can navigate through each melody using <b>previous</b> and <b>next</b> buttons
+* The playlist can be shuffled
+
+
 ## 2.3 User Characteristics 
+It is considered that users do have the basic knowledge to use this product.
+
 ## 2.4 General Constraints 
+The product will work on machines that run <b>Windows</b> operating system. Also, the user should have melodies on his hard drive to load them in the application and listen to music.
+
 ## 2.5 Assumptions and Dependencies 
+This software does not have any other dependencies than the operating system and sound formats. It is assumed that the user allows access to the directories that contain melodies.
 
 # 3. Specific Requirements [TODO: Andrei Cana ]
 
