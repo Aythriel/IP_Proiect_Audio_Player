@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29911.84
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio_Player", "Audio_Player\Audio_Player.csproj", "{7503C232-D89A-4B5E-AB2F-6296457664EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioPlayerLib", "AudioPlayerLib\AudioPlayerLib.csproj", "{C346A7B5-2347-48CC-BB61-1F9E92909B29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{BCC5E00F-3AAA-403C-AB33-8FFF72747AA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7503C232-D89A-4B5E-AB2F-6296457664EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7503C232-D89A-4B5E-AB2F-6296457664EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7503C232-D89A-4B5E-AB2F-6296457664EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C346A7B5-2347-48CC-BB61-1F9E92909B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C346A7B5-2347-48CC-BB61-1F9E92909B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C346A7B5-2347-48CC-BB61-1F9E92909B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C346A7B5-2347-48CC-BB61-1F9E92909B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCC5E00F-3AAA-403C-AB33-8FFF72747AA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCC5E00F-3AAA-403C-AB33-8FFF72747AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCC5E00F-3AAA-403C-AB33-8FFF72747AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCC5E00F-3AAA-403C-AB33-8FFF72747AA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
