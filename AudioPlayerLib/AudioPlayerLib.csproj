@@ -45,7 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioFile.cs" />
+    <Compile Include="AudioPlayer.cs" />
+    <Compile Include="AudioVisualizer.cs" />
     <Compile Include="MusicPlayer.cs" />
+    <Compile Include="PlayList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

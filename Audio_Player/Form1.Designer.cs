@@ -132,6 +132,7 @@
             this.pboxVisualization.Size = new System.Drawing.Size(549, 361);
             this.pboxVisualization.TabIndex = 5;
             this.pboxVisualization.TabStop = false;
+            this.pboxVisualization.Click += new System.EventHandler(this.pboxVisualization_Click);
             // 
             // btnAbout
             // 
