@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AudioPlayerLib
 {
-    class VisualizationEventArgs
+    class VisualizationEventArgs:EventArgs
     {
         public readonly int totalTime;
         public readonly int currentTime;
