@@ -8,6 +8,6 @@ namespace AudioPlayerLib
 {
     public class MusicPlayer
     {
-        private PlayList _playList;
+        private Playlist _playList;
     }
 }
