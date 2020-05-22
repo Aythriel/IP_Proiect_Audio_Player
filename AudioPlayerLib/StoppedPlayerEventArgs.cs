@@ -9,10 +9,12 @@ namespace AudioPlayerLib
     class StoppedPlayerEventArgs:EventArgs
     {
         public readonly string type;
+        public readonly string nextSongType;
 
-        public StoppedPlayerEventArgs(string type) : base()
+        public StoppedPlayerEventArgs(string type, string nextSongType) : base()
         {
             this.type = type;
+            this.nextSongType = nextSongType;
         }
     }
 }

@@ -12,9 +12,11 @@ namespace AudioPlayerLib
     {
         public enum AudioPlayerState { Playing, Paused, Stopped };
         public enum StopCause { EofReached, UserTriggered };
+        public enum NextSongType { NextSong, PrevSong, None };
 
-        private AudioPlayerState _audioPlayerState;
+        public AudioPlayerState _audioPlayerState; 
         private StopCause _stopCause;
+        private NextSongType _nextSongType;
 
         private DirectSoundOut _directSoundOut;
         private WaveStream _waveStream;
@@ -22,6 +24,9 @@ namespace AudioPlayerLib
         private Timer timer;
 
         private AudioFile currentFile;
+
+        
+
         public AudioPlayer
             (
                 StartingPlayingEventHandler startingPlayingNotification,
@@ -30,7 +35,9 @@ namespace AudioPlayerLib
                 VisualizationEventHandler sendVisualContext
             )
         {
+            _stopCause = StopCause.EofReached;
             _audioPlayerState = AudioPlayerState.Stopped;
+            _nextSongType = NextSongType.NextSong;
             StartingPlayingNotification = startingPlayingNotification;
             PausedPlayerNotification = pausedPlayerNotification;
             StoppedPlayerNotification = stoppedPlayerNotification;
@@ -48,6 +55,7 @@ namespace AudioPlayerLib
             if (_audioPlayerState == AudioPlayerState.Stopped)
             {
                 _stopCause = StopCause.EofReached;
+                _nextSongType = NextSongType.NextSong;
                 _audioPlayerState = AudioPlayerState.Playing;
                 switch (audioFile.Format.ToLower())
                 {
@@ -83,6 +91,20 @@ namespace AudioPlayerLib
         }
         public delegate void StartingPlayingEventHandler(object sender, StartedPlayerEventArgs e);
         public event StartingPlayingEventHandler StartingPlayingNotification;
+
+        //play NEXT song
+        public void PlayNextSong()
+        {
+            _nextSongType = NextSongType.NextSong;
+            _waveStream.CurrentTime = TimeSpan.FromSeconds(_waveStream.TotalTime.TotalSeconds);
+        }
+
+        //play PREV song
+        public void PlayPreviousSong()
+        {
+            _nextSongType = NextSongType.PrevSong;
+            _waveStream.CurrentTime = TimeSpan.FromSeconds(_waveStream.TotalTime.TotalSeconds);
+        }
 
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
@@ -129,14 +151,20 @@ namespace AudioPlayerLib
         private void DirectSoundOutput_PlaybackStopped(object sender, StoppedEventArgs sea)
         {
             StoppedPlayerEventArgs stoppedPlayerEventArgs = null;
+            string nextSongTyp = "";
             if (_stopCause == StopCause.EofReached)
             {
                 _audioPlayerState = AudioPlayerState.Stopped;
-                stoppedPlayerEventArgs = new StoppedPlayerEventArgs("EOF");
+                if (_nextSongType == NextSongType.NextSong) nextSongTyp = "NEXT";
+                else if (_nextSongType == NextSongType.PrevSong) nextSongTyp = "PREV";
+                else nextSongTyp = "NONE";
+                _nextSongType = NextSongType.NextSong;
+                stoppedPlayerEventArgs = new StoppedPlayerEventArgs("EOF", nextSongTyp);
             }
             else if (_stopCause == StopCause.UserTriggered)
             {
-                stoppedPlayerEventArgs = new StoppedPlayerEventArgs("USR");
+                _audioPlayerState = AudioPlayerState.Stopped;
+                stoppedPlayerEventArgs = new StoppedPlayerEventArgs("USR", "NONE");
             }
             //else stoppedPlayerEventArgs = new StoppedPlayerEventArgs("UNK");
             StoppedPlayerNotification(new object(), stoppedPlayerEventArgs);
