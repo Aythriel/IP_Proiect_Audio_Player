@@ -20,6 +20,10 @@ namespace AudioPlayerLib
             switch(System.IO.Path.GetExtension(path))
             {
                 case ".mp3":
+                case ".aac":
+                case ".aiff":
+                case ".wav":
+                case ".flac":
                     return true;
                 default:
                     return false;
