@@ -14,22 +14,22 @@ namespace AudioPlayerLib
         public enum StopCause { EofReached, UserTriggered };
         public enum NextSongType { NextSong, PrevSong, None };
 
-        public AudioPlayerState _audioPlayerState; 
+        public AudioPlayerState _audioPlayerState;
         private StopCause _stopCause;
         private NextSongType _nextSongType;
 
         private DirectSoundOut _directSoundOut;
         private WaveStream _waveStream;
         private WaveChannel32 _waveChannel32;
-        private Timer timer;
+        private Timer _timer;
 
-        private AudioFile currentFile;
+        private AudioFile _currentFile;
 
         
 
         public AudioPlayer
             (
-                StartingPlayingEventHandler startingPlayingNotification,
+                StartedPlayingEventHandler startedPlayingNotification,
                 PausedPlayerEventHandler pausedPlayerNotification,
                 StoppedPlayerEventHandler stoppedPlayerNotification,
                 VisualizationEventHandler sendVisualContext
@@ -38,7 +38,7 @@ namespace AudioPlayerLib
             _stopCause = StopCause.EofReached;
             _audioPlayerState = AudioPlayerState.Stopped;
             _nextSongType = NextSongType.NextSong;
-            StartingPlayingNotification = startingPlayingNotification;
+            StartedPlayingNotification = startedPlayingNotification;
             PausedPlayerNotification = pausedPlayerNotification;
             StoppedPlayerNotification = stoppedPlayerNotification;
             SendVisualContext = sendVisualContext;
@@ -47,11 +47,11 @@ namespace AudioPlayerLib
         //starting playing the ...player
         public void PlaySong(AudioFile audioFile)
         {
-            timer = new Timer(100);
-            timer.Elapsed += OnTimedEvent;
-            timer.Enabled = true;
-            timer.Start();
-            currentFile = audioFile;
+            _timer = new Timer(100);
+            _timer.Elapsed += OnTimedEvent;
+            _timer.Enabled = true;
+            _timer.Start();
+            _currentFile = audioFile;
             if (_audioPlayerState == AudioPlayerState.Stopped)
             {
                 _stopCause = StopCause.EofReached;
@@ -87,10 +87,10 @@ namespace AudioPlayerLib
                 _audioPlayerState = AudioPlayerState.Playing;
                 _directSoundOut.Play();
             }
-            StartingPlayingNotification(new object(), new StartedPlayerEventArgs());
+            StartedPlayingNotification(new object(), new StartedPlayerEventArgs());
         }
-        public delegate void StartingPlayingEventHandler(object sender, StartedPlayerEventArgs e);
-        public event StartingPlayingEventHandler StartingPlayingNotification;
+        public delegate void StartedPlayingEventHandler(object sender, StartedPlayerEventArgs e);
+        public event StartedPlayingEventHandler StartedPlayingNotification;
 
         //play NEXT song
         public void PlayNextSong()
@@ -112,7 +112,7 @@ namespace AudioPlayerLib
                 new object(),
                 new VisualizationEventArgs
                 (
-                    currentFile.Name,
+                    _currentFile.Name,
                     (int)_waveStream.TotalTime.TotalMilliseconds,
                     (int)_waveStream.CurrentTime.TotalMilliseconds)
                 );
@@ -126,7 +126,7 @@ namespace AudioPlayerLib
         {
             if (_audioPlayerState == AudioPlayerState.Playing)
             {
-                timer.Stop();
+                _timer.Stop();
                 _audioPlayerState = AudioPlayerState.Paused;
                 _directSoundOut.Pause();
                 PausedPlayerNotification(new object(), new PausedPlayerEventArgs());
@@ -141,7 +141,7 @@ namespace AudioPlayerLib
         {
             if (_audioPlayerState != AudioPlayerState.Stopped)
             {
-                timer.Stop();
+                _timer.Stop();
                 _stopCause = StopCause.UserTriggered;
                 _directSoundOut.Stop();
                 _audioPlayerState = AudioPlayerState.Stopped;
