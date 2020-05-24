@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace AudioPlayerLib
 {
-    public class StartedPlayerEventArgs:EventArgs
+    class DefaultNextSong : IPlayStrategy
     {
-        //dunno what fields should be here now
-        public StartedPlayerEventArgs() : base() { }
+        public int NextSong(int current, int total)
+        {
+            return (current + 1) % total;
+        }
     }
 }

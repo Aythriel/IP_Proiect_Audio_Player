@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace AudioPlayerLib
 {
-    public class StartedPlayerEventArgs:EventArgs
+    interface IPlayStrategy
     {
-        //dunno what fields should be here now
-        public StartedPlayerEventArgs() : base() { }
+        int NextSong(int current, int total);
     }
 }

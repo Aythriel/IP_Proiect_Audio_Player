@@ -11,6 +11,7 @@ namespace AudioPlayerLib
     class Playlist
     {
         private List<AudioFile> _songs;
+        private static Playlist _playList = null;
         
         public int Size { get { return _songs.Count; } }
 
@@ -19,7 +20,7 @@ namespace AudioPlayerLib
             _songs = new List<AudioFile>();
         }
 
-        public Playlist(string path)
+        private Playlist(string path)
         {
             _songs = new List<AudioFile>();
 
@@ -38,6 +39,12 @@ namespace AudioPlayerLib
                         _songs.Add(new AudioFile(file));
                 }
             }
+        }
+
+        public static Playlist getInstance()
+        {
+            if (_playList == null) _playList = new Playlist();
+            return _playList;
         }
 
         public int AddSongs(string path)
