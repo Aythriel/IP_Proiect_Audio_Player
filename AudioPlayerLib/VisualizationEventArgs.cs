@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,14 @@ namespace AudioPlayerLib
 {
     class VisualizationEventArgs:EventArgs
     {
-        public readonly int totalTime;
-        public readonly int currentTime;
-        public readonly string name;
 
-        public VisualizationEventArgs(string name, int tota, int curr) : base()
+        public readonly string name;
+        public readonly WaveStream waveStream;
+
+        public VisualizationEventArgs(string name, NAudio.Wave.WaveStream waveStream) : base()
         {
             this.name = name;
-            this.totalTime = tota;
-            this.currentTime = curr;
+            this.waveStream = waveStream;
         }
     }
 }
