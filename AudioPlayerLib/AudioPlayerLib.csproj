@@ -49,8 +49,14 @@
     <Compile Include="AudioPlayer.cs" />
     <Compile Include="AudioVisualizer.cs" />
     <Compile Include="MusicPlayer.cs" />
-    <Compile Include="Playlist.cs" />
+
+    <Compile Include="PausedPlayerEventArgs.cs" />
+    <Compile Include="PlayList.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StartedPlayerEventArgs.cs" />
+    <Compile Include="StoppedPlayerEventArgs.cs" />
+    <Compile Include="VisualizationEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
