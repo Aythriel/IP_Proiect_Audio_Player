@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Audio_Player
 {
     public partial class Form1 : Form
@@ -15,6 +16,11 @@ namespace Audio_Player
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void pboxVisualization_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
