@@ -83,5 +83,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AudioPlayerLib\AudioPlayerLib.csproj">
+      <Project>{c346a7b5-2347-48cc-bb61-1f9e92909b29}</Project>
+      <Name>AudioPlayerLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
