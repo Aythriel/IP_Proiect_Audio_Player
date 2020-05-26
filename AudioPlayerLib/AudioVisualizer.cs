@@ -10,6 +10,12 @@ using System.Web;
 using System.Windows.Forms;
 using NAudio.Wave;
 
+// File: AudioVisualizer.cs 
+// Author: Cana Andrei - https://github.com/Aythriel
+// Done: May 2020
+// Purpose: A class that is a subpart of an audio player project. Its purpose is to generate pictures and swap
+// them on a timer to visualize song data in the form of high/low waves. 
+
 namespace AudioPlayerLib
 {
     public class AudioVisualizer

@@ -3,6 +3,12 @@ using System.Windows.Forms;
 using AudioPlayerLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+
+// File: VisualizerUnitTests.cs 
+// Author: Cana Andrei - https://github.com/Aythriel
+// Done: May 2020
+// Purpose: An MSUnit testing class designed to help assure the AudioVisualizer module of the music player works correctly.
+
 namespace UnitTesting
 {
     [TestClass]
