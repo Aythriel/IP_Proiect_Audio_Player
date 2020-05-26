@@ -106,20 +106,6 @@ namespace AudioPlayerLib
             _waveStream.CurrentTime = TimeSpan.FromSeconds(_waveStream.TotalTime.TotalSeconds);
         }
         
-        //visualization event emission
-        private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
-        {
-            SendVisualContext(
-                new object(),
-                new VisualizationEventArgs
-                (
-                    _currentFile.Name,
-                    _waveStream
-                ));
-        }
-
-        public delegate void VisualizationEventHandler(object sender, VisualizationEventArgs e);
-        public event VisualizationEventHandler SendVisualContext;
 
         //pausing the player
         public void PauseSong()
