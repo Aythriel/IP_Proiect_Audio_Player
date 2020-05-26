@@ -8,7 +8,7 @@ namespace AudioPlayerLib
 {
     class ShuffleNextSong : IPlayStrategy
     {
-        private static Random _random = new Random(DateTime.Now.Second);
+        private Random _random = new Random(DateTime.Now.Second);
         public int NextSong(int current, int total)
         {
             do

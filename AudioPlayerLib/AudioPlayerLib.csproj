@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -82,7 +83,6 @@
     <Compile Include="ShuffleNextSong.cs" />
     <Compile Include="StartedPlayerEventArgs.cs" />
     <Compile Include="StoppedPlayerEventArgs.cs" />
-    <Compile Include="VisualizationEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

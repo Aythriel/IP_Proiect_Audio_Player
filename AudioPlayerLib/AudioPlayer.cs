@@ -31,8 +31,7 @@ namespace AudioPlayerLib
             (
                 StartedPlayingEventHandler startedPlayingNotification,
                 PausedPlayerEventHandler pausedPlayerNotification,
-                StoppedPlayerEventHandler stoppedPlayerNotification,
-                VisualizationEventHandler sendVisualContext
+                StoppedPlayerEventHandler stoppedPlayerNotification
             )
         {
             _stopCause = StopCause.EofReached;
@@ -41,14 +40,12 @@ namespace AudioPlayerLib
             StartedPlayingNotification += startedPlayingNotification;
             PausedPlayerNotification += pausedPlayerNotification;
             StoppedPlayerNotification += stoppedPlayerNotification;
-            SendVisualContext += sendVisualContext;
         }
 
         //starting playing the ...player
         public void PlaySong(AudioFile audioFile)
         {
             _timer = new Timer(100);
-            _timer.Elapsed += OnTimedEvent;
             _timer.Enabled = true;
             _timer.Start();
             _currentFile = audioFile;
@@ -155,7 +152,6 @@ namespace AudioPlayerLib
             //else stoppedPlayerEventArgs = new StoppedPlayerEventArgs("UNK");
             StoppedPlayerNotification(new object(), stoppedPlayerEventArgs);
         }
-
         public delegate void StoppedPlayerEventHandler(Object sender, StoppedPlayerEventArgs e);
         public event StoppedPlayerEventHandler StoppedPlayerNotification;
     }
