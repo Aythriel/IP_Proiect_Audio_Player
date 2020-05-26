@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AudioPlayerLib
 {
-    class AudioFile
+    public class AudioFile
     {
         private readonly string _format;
         private readonly string _path;

@@ -38,10 +38,10 @@ namespace AudioPlayerLib
             _stopCause = StopCause.EofReached;
             _audioPlayerState = AudioPlayerState.Stopped;
             _nextSongType = NextSongType.NextSong;
-            StartedPlayingNotification = startedPlayingNotification;
-            PausedPlayerNotification = pausedPlayerNotification;
-            StoppedPlayerNotification = stoppedPlayerNotification;
-            SendVisualContext = sendVisualContext;
+            StartedPlayingNotification += startedPlayingNotification;
+            PausedPlayerNotification += pausedPlayerNotification;
+            StoppedPlayerNotification += stoppedPlayerNotification;
+            SendVisualContext += sendVisualContext;
         }
 
         //starting playing the ...player
@@ -105,21 +105,7 @@ namespace AudioPlayerLib
             _nextSongType = NextSongType.PrevSong;
             _waveStream.CurrentTime = TimeSpan.FromSeconds(_waveStream.TotalTime.TotalSeconds);
         }
-
-        private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
-        {
-            SendVisualContext(
-                new object(),
-                new VisualizationEventArgs
-                (
-                    _currentFile.Name,
-                    (int)_waveStream.TotalTime.TotalMilliseconds,
-                    (int)_waveStream.CurrentTime.TotalMilliseconds)
-                );
-        }
-
-        public delegate void VisualizationEventHandler(object sender, VisualizationEventArgs e);
-        public event VisualizationEventHandler SendVisualContext;
+        
 
         //pausing the player
         public void PauseSong()
