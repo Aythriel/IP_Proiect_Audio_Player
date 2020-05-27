@@ -1,15 +1,37 @@
-# 1.Introduction  [TODO: Cosmin Popovici]
+# 1.Introduction  [Done: Cosmin Popovici]
 
-## 1.1 Purpose 
-## 1.2 Scope 
-## 1.3 Definitions, Acronyms and Abberviations 
+## 1.1 Purpose
+
+Main purpose of this project is designing, implementing and testing an Audio Player application for Windows.
+Because it is intended to be an academic project, GUI of the Audio Player isn't very sophisticated and the parts that represents the main focus are the design patterns and other backend details.
+
+## 1.2 Definitions, Acronyms and Abberviations
+
+An Audio Player is a software or hardware (or both) entity capable of playing a list of music files.This entity is capable of playing a song, playing next or previous song, pausing or stopping a song and shuffling the list of songs.
+
+A playlist is a list of music files (songs).
+
+GUI = Graphical User Interface
+
+IDE = Integrated Development Environment
+
+MIDI = Musical Instrument Digital Interface
+
+## 1.3 Intended Audience
+
+From the perspective of using the application, the Audio Player can be used by any person of any age.
+From the perspecting of reading the code source of the application, it can be read by any programmer who want study an example of project which brings together design patterns, Windows Forms, C# events and delegates and the principles of designing an audio player application.
+
 ## 1.4 References 
-## 1.5 Overview 
+
+C# 7.0 in a Nutshell: The Definitive Reference, Joseph Albahari and Ben Albahari
+Windows Forms Programming in C#, Chris Sells
+
 
 # 2. Overall description [DONE: Bogdan Vacariuc]
 ## 2.1 Product Perspective 
 The Audio Player is a desktop application and hence will require an operating system installed on the machine which has to be <b>Windows</b>. 
-It will use .Net 4.7.2 for its development. The package is independent of any other application.
+It will use .NET 4.7.2 for its development. The package is independent of any other application.
 
 ## 2.2 Product Functions 
 The product is supposed to serve as an audio player, providing a simple mechanism for users to use it. 
