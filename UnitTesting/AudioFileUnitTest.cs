@@ -1,4 +1,10 @@
-﻿using System;
+﻿// ================================
+// File: AudioFileUnitTest.cs
+// Author: Teodorovici Silviu
+// Purpose: A unit testing class for running tests on the AudioFile class
+// ================================
+
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AudioPlayerLib;
 
