@@ -152,7 +152,6 @@ namespace AudioPlayerLib
             //else stoppedPlayerEventArgs = new StoppedPlayerEventArgs("UNK");
             StoppedPlayerNotification(new object(), stoppedPlayerEventArgs);
         }
-
         public delegate void StoppedPlayerEventHandler(Object sender, StoppedPlayerEventArgs e);
         public event StoppedPlayerEventHandler StoppedPlayerNotification;
     }

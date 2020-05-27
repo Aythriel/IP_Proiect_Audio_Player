@@ -19,7 +19,7 @@ namespace AudioPlayerLib
         private static Playlist _instance;
 
         private List<AudioFile> _songs;
-        
+
         public int Size { get { return _songs.Count; } }
 
         private Playlist()
