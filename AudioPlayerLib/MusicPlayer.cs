@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static AudioPlayerLib.AudioPlayer;
 
+// File: MusicPlayer.cs 
+// Author: Bogdan Vacariuc
+// Done: May 2020
+// Purpose: MusicPlayer facade that will be called from the interface.
+
 //makes it so when building in debug, privates from this class are visible to unit test projects
 #if DEBUG
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("UnitTesting")]

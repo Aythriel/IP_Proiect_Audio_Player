@@ -53,6 +53,7 @@
     <Compile Include="PlaylistUnitTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MusicPlayerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
