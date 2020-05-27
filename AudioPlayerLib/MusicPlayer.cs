@@ -46,12 +46,13 @@ namespace AudioPlayerLib
             _audioVisualizer = new AudioVisualizer(progressBar, pictureBox, timer);
         }
 
+        // adds a new playlist from the given path
         public int LoadNewPlaylist(string path)
         {
             _playList.Clear();
             return _playList.AddSongs(path);
         }
-
+        // adds the melodies from the given path to the existing playlist
         public int AddToPlaylist(string path)
         {
             return _playList.AddSongs(path);
@@ -62,6 +63,7 @@ namespace AudioPlayerLib
             return _playList.RemoveSong(songid);
         }
 
+        // selects the song with the songid
         public void SelectSong(int songid)
         {
             _currentSong = songid;
@@ -69,6 +71,7 @@ namespace AudioPlayerLib
             Play();
         }
 
+        // stops playing the current song
         public void Stop()
         {
             _audioPlayer.StopSong();
@@ -80,6 +83,7 @@ namespace AudioPlayerLib
             _audioPlayer.PlaySong(_playList.GetSong(_currentSong));
         }
 
+        // switches to next song
         public void Next()
         {
             _audioVisualizer.SetSong(_playList.GetSong(_currentSong));
@@ -92,6 +96,7 @@ namespace AudioPlayerLib
             _audioPlayer.PauseSong();
         }
 
+        // switches to previous song
         public void Previous()
         {
             if(_currentSong > 0)
@@ -104,6 +109,7 @@ namespace AudioPlayerLib
             }
         }
 
+        // sends events when the play mode is changed
         public void SetPlayMode(PlayMode playMode)
         {
             if (playMode.Equals(PlayMode.Default)) _playNext = new DefaultNextSong();
@@ -113,6 +119,7 @@ namespace AudioPlayerLib
         public delegate void PlayModeEventHandler(Object sender, PlayModeEventArgs e);
         public event PlayModeEventHandler PlayModeNotification;
 
+        // sends events when the melody is paused
         private void PausedPlayerEventHandler(Object sender, PausedPlayerEventArgs e)
         {
             _audioVisualizer.OnPauseEvent(sender, e);
@@ -121,6 +128,7 @@ namespace AudioPlayerLib
         public delegate void PausedPlayerNotificationEventHandler(Object sender, PausedPlayerEventArgs e);
         public event PausedPlayerNotificationEventHandler PausedPlayerEvent;
 
+        // sends events when the melody started to play
         private void StartedPlayingEventHandler(object sender, StartedPlayerEventArgs e)
         {
             _audioVisualizer.OnStartEvent(sender, e);
@@ -129,6 +137,7 @@ namespace AudioPlayerLib
         public delegate void StartedPlayingNotificationEventHandler(Object sender, StartedPlayerEventArgs e);
         public event StartedPlayingNotificationEventHandler StartedPlayingEvent;
 
+        // sends events when the melody is stopped
         private void StoppedPlayerEventHandler(Object sender, StoppedPlayerEventArgs e)
         {
             if (e.type.Equals("EOF"))
@@ -156,6 +165,7 @@ namespace AudioPlayerLib
         public delegate void StoppedPlayerEventHandlerNotificaiton(Object sender, StoppedPlayerEventArgs e);
         public event StoppedPlayerEventHandlerNotificaiton StoppedPlayerNotification;
 
+        // sends events when the visualizer is updated
         public void UpdateVisualize(Object sender, EventArgs e)
         {
             _audioVisualizer.VisualUpdateEvent(sender, e);
