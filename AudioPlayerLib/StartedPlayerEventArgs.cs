@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AudioPlayerLib
 {
-    class StartedPlayerEventArgs:EventArgs
+    public class StartedPlayerEventArgs:EventArgs
     {
         //dunno what fields should be here now
         public StartedPlayerEventArgs() : base() { }

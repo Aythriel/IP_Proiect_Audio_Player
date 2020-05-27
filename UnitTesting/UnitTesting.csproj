@@ -55,6 +55,7 @@
     <Compile Include="AudioPlayerUnitTest.cs" />
     <Compile Include="PlaylistUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MusicPlayerTest.cs" />
     <Compile Include="VisualizerUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
