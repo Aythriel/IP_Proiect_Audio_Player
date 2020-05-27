@@ -31,7 +31,7 @@ namespace AudioPlayerLib
             (
                 StartedPlayingEventHandler startedPlayingNotification,
                 PausedPlayerEventHandler pausedPlayerNotification,
-                StoppedPlayerEventHandler stoppedPlayerNotification,
+                StoppedPlayerEventHandler stoppedPlayerNotification
             )
         {
             _stopCause = StopCause.EofReached;
