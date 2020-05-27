@@ -31,7 +31,7 @@ namespace AudioPlayerLib
                             ProgressBar progressBar,
                             PictureBox pictureBox,
                             UpdateVisualizeEventHandler updateVisualizeNotification) {
-            _playList = Playlist.getInstance();
+            _playList = Playlist.Instance();
             _audioPlayer = new AudioPlayer(StartedPlayingEventHandler, PausedPlayerEventHandler, StoppedPlayerEventHandler);
             PlayModeNotification = playModeNotification;
             PausedPlayerEvent = pausedPlayerEvent;
@@ -41,53 +41,53 @@ namespace AudioPlayerLib
             _audioVisualizer = new AudioVisualizer(progressBar, pictureBox, timer);
         }
 
-        public int loadNewPlaylist(string path)
+        public int LoadNewPlaylist(string path)
         {
             _playList.Clear();
             return _playList.AddSongs(path);
         }
 
-        public int addToPlaylist(string path)
+        public int AddToPlaylist(string path)
         {
             return _playList.AddSongs(path);
         }
 
-        public bool removeFromPlaylist(int songid)
+        public bool RemoveFromPlaylist(int songid)
         {
             return _playList.RemoveSong(songid);
         }
 
-        public void selectSong(int songid)
+        public void SelectSong(int songid)
         {
             _currentSong = songid;
             _audioVisualizer.SetSong(_playList.GetSong(_currentSong));
-            play();
+            Play();
         }
 
-        public void stop()
+        public void Stop()
         {
             _audioPlayer.StopSong();
         }
 
-        public void play()
+        public void Play()
         {
             //_audioPlayer.StopSong();
             _audioPlayer.PlaySong(_playList.GetSong(_currentSong));
         }
 
-        public void next()
+        public void Next()
         {
             _audioVisualizer.SetSong(_playList.GetSong(_currentSong));
             _currentSong = _playNext.NextSong(_currentSong, _playList.Size);
-            play();
+            Play();
         }
 
-        public void pause()
+        public void Pause()
         {
             _audioPlayer.PauseSong();
         }
 
-        public void previous()
+        public void Previous()
         {
             if(_currentSong > 0)
             {
@@ -95,11 +95,11 @@ namespace AudioPlayerLib
                 _currentSong--; 
                 _audioPlayer.PlayPreviousSong();
                 _audioVisualizer.SetSong(_playList.GetSong(_currentSong));
-                play();
+                Play();
             }
         }
 
-        public void setPlayMode(PlayMode playMode)
+        public void SetPlayMode(PlayMode playMode)
         {
             if (playMode.Equals(PlayMode.Default)) _playNext = new DefaultNextSong();
             else _playNext = new ShuffleNextSong();
@@ -130,21 +130,21 @@ namespace AudioPlayerLib
             {
                 if (e.nextSongType.Equals("NEXT"))
                 {
-                    next();
+                    Next();
                 }
                 else if (e.nextSongType.Equals("PREV"))
                 {
-                    previous();
+                    Previous();
                 }
                 else
                 {
                     _currentSong = 0;
-                    play();
+                    Play();
                 }
             }
             else if (e.type.Equals("USR"))
             {
-                stop();
+                Stop();
             }
             StoppedPlayerNotification(new object(), e);
         }

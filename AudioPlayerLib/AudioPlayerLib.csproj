@@ -76,7 +76,7 @@
     <Compile Include="DefaultNextSong.cs" />
     <Compile Include="MusicPlayer.cs" />
     <Compile Include="PausedPlayerEventArgs.cs" />
-    <Compile Include="PlayList.cs" />
+    <Compile Include="Playlist.cs" />
     <Compile Include="IPlayStrategy.cs" />
     <Compile Include="PlayModeEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
