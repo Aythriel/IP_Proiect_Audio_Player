@@ -112,6 +112,14 @@ namespace AudioPlayerLib
            
         }
         
+        public void ClearSong()
+        {
+            this._visEventTimer.Enabled = false;
+            this._currentSong = String.Empty;
+            if(null!=this._picBox.Image)
+                this._picBox.Image.Dispose();
+            this._progBar.Value = 0;
+        }
         public void CreateCurrentSongImage(AudioFile audioFile)
         {
             try

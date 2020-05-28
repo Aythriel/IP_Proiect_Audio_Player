@@ -43,9 +43,12 @@ namespace Audio_Player
         private void btnPlay_Click(object sender, EventArgs e)
         {
             if (currentPlayingIndex != listBoxSongs.SelectedIndex)
+            {
                 ourMusicPlayer.Stop();
+                ourMusicPlayer.SelectSong(listBoxSongs.SelectedIndex);
+            }
+               
             
-            ourMusicPlayer.SelectSong(listBoxSongs.SelectedIndex);
             ourMusicPlayer.Play();
             lblCurrentlyPlaying.Text = "Currently playing" + listBoxSongs.SelectedItem.ToString();
             currentPlayingIndex = listBoxSongs.SelectedIndex;
@@ -59,18 +62,31 @@ namespace Audio_Player
 
         private void PausedPlayerHandler(object sender, PausedPlayerEventArgs e)
         {
-
+            this.btnPause.Enabled = false;
+            this.btnPrevSong.Enabled = false;
+            this.btnNext.Enabled = false;
+            this.btnPlay.Enabled = true;
+            this.btnStop.Enabled = true;
         }
 
         private void StartedPlayingHandler(object sender, StartedPlayerEventArgs e)
         {
-
+            this.btnPlay.Enabled = false;
+            this.btnPrevSong.Enabled = true;
+            this.btnNext.Enabled = true;
+            this.btnStop.Enabled = true;
+            this.btnPause.Enabled = true;
         }
 
         private void StoppedPlayerHandler(object sender, StoppedPlayerEventArgs e)
         {
-
+            this.btnPlay.Enabled = true;
+            this.btnStop.Enabled = false;
+            this.btnPause.Enabled = false;
+            this.btnPrevSong.Enabled = false;
+            this.btnNext.Enabled = false;
         }
+
 
         private void UpdateVisualizeHandler(object sender, EventArgs e)
         {
@@ -138,6 +154,7 @@ namespace Audio_Player
             cbAutoplay.Enabled = false;
             cbShuffle.Checked = false;
             cbShuffle.Enabled = false;
+            btnStop.Enabled = false;
         }
 
         private void enableAllControls()
@@ -150,6 +167,7 @@ namespace Audio_Player
             cbAutoplay.Enabled = true;
             cbShuffle.Checked = false;
             cbShuffle.Enabled = true;
+            btnStop.Enabled = true;
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -171,7 +189,8 @@ namespace Audio_Player
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("SRS.pdf");
+            if(File.Exists("SRS.pdf"))
+                System.Diagnostics.Process.Start("SRS.pdf");
         }
     }
 }

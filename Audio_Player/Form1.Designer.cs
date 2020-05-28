@@ -99,7 +99,7 @@
             // cbAutoplay
             // 
             this.cbAutoplay.AutoSize = true;
-            this.cbAutoplay.Location = new System.Drawing.Point(414, 53);
+            this.cbAutoplay.Location = new System.Drawing.Point(318, 77);
             this.cbAutoplay.Name = "cbAutoplay";
             this.cbAutoplay.Size = new System.Drawing.Size(92, 17);
             this.cbAutoplay.TabIndex = 5;
@@ -108,7 +108,7 @@
             // 
             // btnPause
             // 
-            this.btnPause.Location = new System.Drawing.Point(188, 49);
+            this.btnPause.Location = new System.Drawing.Point(106, 78);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(75, 23);
             this.btnPause.TabIndex = 4;
@@ -119,7 +119,7 @@
             // cbShuffle
             // 
             this.cbShuffle.AutoSize = true;
-            this.cbShuffle.Location = new System.Drawing.Point(349, 53);
+            this.cbShuffle.Location = new System.Drawing.Point(318, 24);
             this.cbShuffle.Name = "cbShuffle";
             this.cbShuffle.Size = new System.Drawing.Size(59, 17);
             this.cbShuffle.TabIndex = 3;
@@ -128,7 +128,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(268, 49);
+            this.btnNext.Location = new System.Drawing.Point(187, 49);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 2;

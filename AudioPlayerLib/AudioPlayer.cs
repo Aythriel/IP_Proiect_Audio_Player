@@ -56,13 +56,13 @@ namespace AudioPlayerLib
                 _audioPlayerState = AudioPlayerState.Playing;
                 switch (audioFile.Format.ToLower())
                 {
-                    case "mp3":
+                    case ".mp3":
                         _waveStream = new Mp3FileReader(audioFile.Path);
                         break;
-                    case "wav":
+                    case ".wav":
                         _waveStream = new WaveFileReader(audioFile.Path);
                         break;
-                    case "aiff":
+                    case ".aiff":
                         _waveStream = new AiffFileReader(audioFile.Path);
                         break;
                     default:

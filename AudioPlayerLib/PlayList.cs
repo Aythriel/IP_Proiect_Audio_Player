@@ -52,31 +52,20 @@ namespace AudioPlayerLib
 
             if (path != "")
             {
-                if (Path.GetFileName(path) != String.Empty)
+               
+                
+                string[] files = Directory.GetFiles(path);
+
+                foreach (string file in files)
                 {
-                    if (AudioFile.AcceptsFormat(path))
+                    if (AudioFile.AcceptsFormat(file))
                     {
-                        _songs.Add(new AudioFile(path));
-                        _listBoxSongs.Items.Add(path);
+                        _songs.Add(new AudioFile(file));
+                        _listBoxSongs.Items.Add(file);
                         count++;
                     }
-                    
                 }
-                else
-                {
-                    string[] files = Directory.GetFiles(path);
 
-                    foreach (string file in files)
-                    {
-                        if (AudioFile.AcceptsFormat(file))
-                        {
-                            _songs.Add(new AudioFile(file));
-                            _listBoxSongs.Items.Add(file);
-                            count++;
-                        }
-                    }
-
-                }
             }
 
             return count;

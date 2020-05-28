@@ -71,19 +71,22 @@ namespace AudioPlayerLib
         {
             _currentSong = songid;
             _audioVisualizer.SetSong(_playList.GetSong(_currentSong));
-            Play();
         }
 
         // stops playing the current song
         public void Stop()
         {
             _audioPlayer.StopSong();
-            _audioVisualizer.OnPauseEvent(this, null);
+            _audioVisualizer.ClearSong();
         }
 
         public void Play()
         {
-            //_audioPlayer.StopSong();
+            if(_audioPlayer._audioPlayerState == AudioPlayerState.Playing)
+            {
+                _audioPlayer.StopSong();
+                _audioVisualizer.ClearSong();
+            }
             _audioPlayer.PlaySong(_playList.GetSong(_currentSong));
         }
 
