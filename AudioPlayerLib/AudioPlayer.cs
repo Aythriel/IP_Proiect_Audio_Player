@@ -94,6 +94,7 @@ namespace AudioPlayerLib
         {
             _nextSongType = NextSongType.NextSong;
             _waveStream.CurrentTime = TimeSpan.FromSeconds(_waveStream.TotalTime.TotalSeconds);
+
         }
 
         //play PREV song

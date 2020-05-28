@@ -13,12 +13,12 @@ using System.IO;
 
 namespace Audio_Player
 {
-    public partial class Form1 : Form
+    public partial class AudioPlayerForm : Form
     {
         private System.Windows.Forms.OpenFileDialog browseSongsDialog;
         private MusicPlayer ourMusicPlayer = null;
         private int currentPlayingIndex = -1;
-        public Form1()
+        public AudioPlayerForm()
         {
             InitializeComponent();
 
@@ -191,6 +191,16 @@ namespace Audio_Player
         {
             if(File.Exists("SRS.pdf"))
                 System.Diagnostics.Process.Start("SRS.pdf");
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            ourMusicPlayer.Next();
+        }
+
+        private void btnPrevSong_Click(object sender, EventArgs e)
+        {
+            ourMusicPlayer.Previous();
         }
     }
 }

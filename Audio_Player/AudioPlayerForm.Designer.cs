@@ -1,6 +1,6 @@
 ﻿namespace Audio_Player
 {
-    partial class Form1
+    partial class AudioPlayerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -134,6 +134,7 @@
             this.btnNext.TabIndex = 2;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPlay
             // 
@@ -153,6 +154,7 @@
             this.btnPrevSong.TabIndex = 0;
             this.btnPrevSong.Text = "Previous ";
             this.btnPrevSong.UseVisualStyleBackColor = true;
+            this.btnPrevSong.Click += new System.EventHandler(this.btnPrevSong_Click);
             // 
             // btnAbout
             // 
@@ -218,7 +220,7 @@
             this.picBoxVisualizations.TabIndex = 16;
             this.picBoxVisualizations.TabStop = false;
             // 
-            // Form1
+            // AudioPlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -233,8 +235,8 @@
             this.Controls.Add(this.gbConsole);
             this.Controls.Add(this.listBoxSongs);
             this.Controls.Add(this.btnAddSongs);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "AudioPlayerForm";
+            this.Text = "Audio Player IP - SPR JMK";
             this.gbConsole.ResumeLayout(false);
             this.gbConsole.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxVisualizations)).EndInit();

@@ -93,9 +93,8 @@ namespace AudioPlayerLib
         // switches to next song
         public void Next()
         {
-            _audioVisualizer.SetSong(_playList.GetSong(_currentSong));
-            _currentSong = _playNext.NextSong(_currentSong, _playList.Size);
-            Play();
+            
+            _audioPlayer.PlayNextSong();
         }
 
         public void Pause()
@@ -107,14 +106,8 @@ namespace AudioPlayerLib
         // switches to previous song
         public void Previous()
         {
-            if(_currentSong > 0)
-            {
-                _audioPlayer.StopSong();
-                _currentSong--; 
-                _audioPlayer.PlayPreviousSong();
-                _audioVisualizer.SetSong(_playList.GetSong(_currentSong));
-                Play();
-            }
+
+            _audioPlayer.PlayPreviousSong();
         }
 
         // sends events when the play mode is changed
@@ -152,21 +145,28 @@ namespace AudioPlayerLib
             {
                 if (e.nextSongType.Equals("NEXT"))
                 {
-                    Next();
+                    _currentSong = _playNext.NextSong(_currentSong, _playList.Size);
+                    _audioVisualizer.SetSong(_playList.GetSong(_currentSong));
+                    Play();
                 }
                 else if (e.nextSongType.Equals("PREV"))
                 {
-                    Previous();
+                    if(_currentSong > 0)
+                     {
+                         _currentSong--; 
+                         _audioVisualizer.SetSong(_playList.GetSong(_currentSong));
+                         Play();
+                     }
                 }
                 else
                 {
-                    _currentSong = 0;
-                    Play();
+                    //_currentSong = 0;
+                    //Play();
                 }
             }
             else if (e.type.Equals("USR"))
             {
-                Stop();
+                //Stop();
             }
             StoppedPlayerNotification(new object(), e);
         }
