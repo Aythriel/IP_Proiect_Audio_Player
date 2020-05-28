@@ -32,6 +32,7 @@
             this.btnAddSongs = new System.Windows.Forms.Button();
             this.listBoxSongs = new System.Windows.Forms.ListBox();
             this.gbConsole = new System.Windows.Forms.GroupBox();
+            this.btnStop = new System.Windows.Forms.Button();
             this.cbAutoplay = new System.Windows.Forms.CheckBox();
             this.btnPause = new System.Windows.Forms.Button();
             this.cbShuffle = new System.Windows.Forms.CheckBox();
@@ -46,7 +47,6 @@
             this.timerVisUpdate = new System.Windows.Forms.Timer(this.components);
             this.progBarSong = new System.Windows.Forms.ProgressBar();
             this.picBoxVisualizations = new System.Windows.Forms.PictureBox();
-            this.btnStop = new System.Windows.Forms.Button();
             this.gbConsole.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxVisualizations)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +85,16 @@
             this.gbConsole.TabIndex = 3;
             this.gbConsole.TabStop = false;
             this.gbConsole.Text = "Console Groupbox";
+            // 
+            // btnStop
+            // 
+            this.btnStop.Location = new System.Drawing.Point(106, 20);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(75, 23);
+            this.btnStop.TabIndex = 6;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // cbAutoplay
             // 
@@ -162,6 +172,7 @@
             this.btnHelp.TabIndex = 7;
             this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // lblCurrentlyPlaying
             // 
@@ -206,16 +217,6 @@
             this.picBoxVisualizations.Size = new System.Drawing.Size(560, 299);
             this.picBoxVisualizations.TabIndex = 16;
             this.picBoxVisualizations.TabStop = false;
-            // 
-            // btnStop
-            // 
-            this.btnStop.Location = new System.Drawing.Point(106, 20);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
-            this.btnStop.TabIndex = 6;
-            this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // Form1
             // 

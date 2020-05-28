@@ -168,5 +168,10 @@ namespace Audio_Player
                 +@"https://github.com/Aythriel/IP_Proiect_Audio_Player";
             System.Windows.Forms.MessageBox.Show(message, "About");
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("SRS.pdf");
+        }
     }
 }
