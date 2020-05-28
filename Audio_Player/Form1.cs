@@ -159,15 +159,13 @@ namespace Audio_Player
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
-            string message = @"
-                Music Player projected developed as part of the Programming Engineering course at the CS university of Iasi.
-                Developed by:
-                Cana Andrei
-                Popovici Cosmin
-                Vacariuc Bogdan
-                Teodorovici Silviu
-                https://github.com/Aythriel/IP_Proiect_Audio_Player
-            ";
+            string message = "Music Player projected developed as part of the \nProgramming Engineering course \nat the Computer Engineering Faculty of TUIasi.\n"
+                +"Developed by:\n"
+                +"Cana Andrei\n"
+                +"Popovici Cosmin\n"
+                +"Vacariuc Bogdan\n"
+                +"Teodorovici Silviu\n"
+                +@"https://github.com/Aythriel/IP_Proiect_Audio_Player";
             System.Windows.Forms.MessageBox.Show(message, "About");
         }
     }
