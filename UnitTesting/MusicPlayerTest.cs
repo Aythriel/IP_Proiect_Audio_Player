@@ -12,7 +12,7 @@ namespace UnitTesting
         [TestInitialize]
         public void init()
         {
-            //_musicPlayer = new MusicPlayer(null, null, null, null, new System.Windows.Forms.Timer(), new System.Windows.Forms.ProgressBar(), new System.Windows.Forms.PictureBox(), null);
+            _musicPlayer = new MusicPlayer(null, null, null, null, new System.Windows.Forms.Timer(), new System.Windows.Forms.ProgressBar(), new System.Windows.Forms.PictureBox(), null);
         }
 
         [TestMethod]

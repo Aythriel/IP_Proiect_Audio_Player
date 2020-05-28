@@ -225,7 +225,7 @@
             this.Controls.Add(this.listBoxSongs);
             this.Controls.Add(this.btnAddSongs);
             this.Name = "AudioPlayerForm";
-            this.Text = "Audio Player IP - SPR JMK";
+            this.Text = "Audio Player IP";
             this.gbConsole.ResumeLayout(false);
             this.gbConsole.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxVisualizations)).EndInit();

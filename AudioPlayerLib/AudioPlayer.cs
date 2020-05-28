@@ -1,4 +1,10 @@
-﻿using NAudio.Wave;
+﻿// File: AudioPlayer.cs
+// Author: Cosmin Popovici
+// Done: May 2020
+// Purpose: Class encapsulating the lowest level logic of the player 
+
+
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Linq;

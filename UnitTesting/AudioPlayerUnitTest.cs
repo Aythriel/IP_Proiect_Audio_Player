@@ -1,4 +1,9 @@
-﻿using System;
+﻿// File: AudioPlayer.cs
+// Author: Cosmin Popovici
+// Done: May 2020
+// Purpose: Test Sequence for testing audio player
+
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AudioPlayerLib;
 using System.Threading;
