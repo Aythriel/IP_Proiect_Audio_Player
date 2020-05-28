@@ -33,7 +33,6 @@
             this.listBoxSongs = new System.Windows.Forms.ListBox();
             this.gbConsole = new System.Windows.Forms.GroupBox();
             this.btnStop = new System.Windows.Forms.Button();
-            this.cbAutoplay = new System.Windows.Forms.CheckBox();
             this.btnPause = new System.Windows.Forms.Button();
             this.cbShuffle = new System.Windows.Forms.CheckBox();
             this.btnNext = new System.Windows.Forms.Button();
@@ -73,7 +72,6 @@
             // gbConsole
             // 
             this.gbConsole.Controls.Add(this.btnStop);
-            this.gbConsole.Controls.Add(this.cbAutoplay);
             this.gbConsole.Controls.Add(this.btnPause);
             this.gbConsole.Controls.Add(this.cbShuffle);
             this.gbConsole.Controls.Add(this.btnNext);
@@ -96,16 +94,6 @@
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // cbAutoplay
-            // 
-            this.cbAutoplay.AutoSize = true;
-            this.cbAutoplay.Location = new System.Drawing.Point(318, 77);
-            this.cbAutoplay.Name = "cbAutoplay";
-            this.cbAutoplay.Size = new System.Drawing.Size(92, 17);
-            this.cbAutoplay.TabIndex = 5;
-            this.cbAutoplay.Text = "Autoplay Next";
-            this.cbAutoplay.UseVisualStyleBackColor = true;
-            // 
             // btnPause
             // 
             this.btnPause.Location = new System.Drawing.Point(106, 78);
@@ -125,6 +113,7 @@
             this.cbShuffle.TabIndex = 3;
             this.cbShuffle.Text = "Shuffle";
             this.cbShuffle.UseVisualStyleBackColor = true;
+            this.cbShuffle.CheckedChanged += new System.EventHandler(this.cbShuffle_CheckedChanged);
             // 
             // btnNext
             // 
@@ -257,7 +246,6 @@
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Label lblCurrentlyPlaying;
-        private System.Windows.Forms.CheckBox cbAutoplay;
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnAddPlaylist;
         private System.Windows.Forms.Button btnRemoveSelected;

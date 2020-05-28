@@ -13,5 +13,6 @@ namespace AudioPlayerLib
     interface IPlayStrategy
     {
         int NextSong(int current, int total);
+        int PrevSong(int current, int total);
     }
 }

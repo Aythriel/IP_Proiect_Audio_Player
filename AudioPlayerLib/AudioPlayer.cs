@@ -93,15 +93,14 @@ namespace AudioPlayerLib
         public void PlayNextSong()
         {
             _nextSongType = NextSongType.NextSong;
-            _waveStream.CurrentTime = TimeSpan.FromSeconds(_waveStream.TotalTime.TotalSeconds);
-
+            _waveStream.CurrentTime = TimeSpan.FromSeconds(_waveStream.TotalTime.TotalSeconds-0.1);
         }
 
         //play PREV song
         public void PlayPreviousSong()
         {
             _nextSongType = NextSongType.PrevSong;
-            _waveStream.CurrentTime = TimeSpan.FromSeconds(_waveStream.TotalTime.TotalSeconds);
+            _waveStream.CurrentTime = TimeSpan.FromSeconds(_waveStream.TotalTime.TotalSeconds-0.1);
         }
         
 

@@ -18,5 +18,17 @@ namespace AudioPlayerLib
         {
             return (current + 1) % total;
         }
+
+        public int PrevSong(int current, int total)
+        {
+            if (current == 0)
+            {
+                return total - 1;
+            }
+            else
+            {
+                return current - 1;
+            }
+        }
     }
 }

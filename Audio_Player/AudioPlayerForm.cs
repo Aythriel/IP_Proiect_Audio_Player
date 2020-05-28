@@ -23,13 +23,14 @@ namespace Audio_Player
             InitializeComponent();
 
 
-            ourMusicPlayer = new MusicPlayer(PlayModeHandler, 
+            ourMusicPlayer = new MusicPlayer(/*PlayModeHandler, */
                 PausedPlayerHandler, 
                 StartedPlayingHandler, 
                 StoppedPlayerHandler, 
                 timerVisUpdate, progBarSong, picBoxVisualizations, listBoxSongs,
                 UpdateVisualizeHandler);
             disableAllControls();
+            
             
         }
 
@@ -42,6 +43,9 @@ namespace Audio_Player
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
+            if(listBoxSongs.SelectedIndex==-1)
+                listBoxSongs.SelectedIndex = 0;
+
             if (currentPlayingIndex != listBoxSongs.SelectedIndex)
             {
                 ourMusicPlayer.Stop();
@@ -80,11 +84,32 @@ namespace Audio_Player
 
         private void StoppedPlayerHandler(object sender, StoppedPlayerEventArgs e)
         {
-            this.btnPlay.Enabled = true;
-            this.btnStop.Enabled = false;
-            this.btnPause.Enabled = false;
-            this.btnPrevSong.Enabled = false;
-            this.btnNext.Enabled = false;
+            if (e.type.Equals("EOF"))
+            {
+                if (e.nextSongType.Equals("NEXT"))
+                {
+                    listBoxSongs.SelectedIndex = ourMusicPlayer.getCurrentSong();
+                    lblCurrentlyPlaying.Text = "Currently playing" + listBoxSongs.SelectedItem.ToString();
+                }
+                else if (e.nextSongType.Equals("PREV"))
+                {
+                    listBoxSongs.SelectedIndex = ourMusicPlayer.getCurrentSong();
+                    lblCurrentlyPlaying.Text = "Currently playing" + listBoxSongs.SelectedItem.ToString();
+                }
+                else
+                {
+
+                }
+
+            }
+            else if (e.type.Equals("USR"))
+            {
+                this.btnPlay.Enabled = true;
+                this.btnStop.Enabled = false;
+                this.btnPause.Enabled = false;
+                this.btnPrevSong.Enabled = false;
+                this.btnNext.Enabled = false;
+            }
         }
 
 
@@ -150,8 +175,6 @@ namespace Audio_Player
             btnPause.Enabled = false;
             btnNext.Enabled = false;
             btnPrevSong.Enabled = false;
-            cbAutoplay.Checked = false;
-            cbAutoplay.Enabled = false;
             cbShuffle.Checked = false;
             cbShuffle.Enabled = false;
             btnStop.Enabled = false;
@@ -163,8 +186,6 @@ namespace Audio_Player
             btnPause.Enabled = true;
             btnNext.Enabled = true;
             btnPrevSong.Enabled = true;
-            cbAutoplay.Checked = false;
-            cbAutoplay.Enabled = true;
             cbShuffle.Checked = false;
             cbShuffle.Enabled = true;
             btnStop.Enabled = true;
@@ -201,6 +222,12 @@ namespace Audio_Player
         private void btnPrevSong_Click(object sender, EventArgs e)
         {
             ourMusicPlayer.Previous();
+        }
+
+        private void cbShuffle_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbShuffle.Checked == false) ourMusicPlayer.SetPlayMode(MusicPlayer.PlayMode.Default);
+            else ourMusicPlayer.SetPlayMode(MusicPlayer.PlayMode.Shuffle);
         }
     }
 }

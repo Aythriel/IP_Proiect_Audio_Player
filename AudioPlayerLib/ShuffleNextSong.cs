@@ -13,14 +13,28 @@ namespace AudioPlayerLib
 {
     class ShuffleNextSong : IPlayStrategy
     {
-        private Random _random = new Random(DateTime.Now.Second);
+        private Random _random;
         public int NextSong(int current, int total)
         {
-            do
+            _random = new Random(DateTime.Now.Second);
+            int nextSong = _random.Next(0, total);
+            while (nextSong == current || nextSong == current + 1 || nextSong == current - 1)
             {
-                int nextSong = _random.Next(0, total);
-                if (nextSong != current) return nextSong;
-            } while (true);
+                nextSong = _random.Next(0, total);
+            }
+            return nextSong;
+        }
+
+        public int PrevSong(int current, int total)
+        {
+            if (current == 0)
+            {
+                return total - 1;
+            } 
+            else
+            {
+                return current - 1;
+            }
         }
     }
 }
