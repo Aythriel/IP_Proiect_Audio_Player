@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace AudioPlayerLib
 {
@@ -19,8 +20,14 @@ namespace AudioPlayerLib
         private static Playlist _instance;
 
         private List<AudioFile> _songs;
+        private ListBox _listBoxSongs;
 
         public int Size { get { return _songs.Count; } }
+
+        public void setControl(ListBox listBoxSongs)
+        {
+            this._listBoxSongs = listBoxSongs;
+        }
 
         private Playlist()
         {
@@ -43,9 +50,9 @@ namespace AudioPlayerLib
         {
             int count = 0;
 
-            if (path != "")
+            if (path != "" && path != null)
             {
-                if (Path.GetFileName(path) != String.Empty)
+                if (Path.GetExtension(path) != String.Empty)
                 {
                     if (AudioFile.AcceptsFormat(path))
                     {

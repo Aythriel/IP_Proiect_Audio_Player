@@ -27,7 +27,7 @@ namespace AudioPlayerLib
         {
             if (path == null || path == "")
                 throw new Exception("Attempted to create an AudioFile with null or empty path.");
-            if (System.IO.Path.GetFileName(path) == String.Empty)
+            if (System.IO.Path.GetExtension(path) == String.Empty)
                 throw new Exception("Attempted to create an AudioFile with a path that doesn't point to a file.");
             if (AcceptsFormat(path) == false)
                 throw new Exception("Attempted to create an AudioFile with an unaccepted file extension.");
