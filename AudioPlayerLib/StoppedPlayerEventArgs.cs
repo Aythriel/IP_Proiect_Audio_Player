@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AudioPlayerLib
 {
-    class StoppedPlayerEventArgs:EventArgs
+    public class StoppedPlayerEventArgs:EventArgs
     {
         public readonly string type;
         public readonly string nextSongType;

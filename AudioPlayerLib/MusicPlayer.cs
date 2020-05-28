@@ -18,7 +18,7 @@ using static AudioPlayerLib.AudioPlayer;
 #endif
 namespace AudioPlayerLib
 {
-    class MusicPlayer
+    public class MusicPlayer
     {
         private Playlist _playList;
         private AudioPlayer _audioPlayer;
@@ -35,8 +35,10 @@ namespace AudioPlayerLib
                             Timer timer,
                             ProgressBar progressBar,
                             PictureBox pictureBox,
+                            ListBox listBoxSongs,
                             UpdateVisualizeEventHandler updateVisualizeNotification) {
             _playList = Playlist.Instance();
+            _playList.setControl(listBoxSongs);
             _audioPlayer = new AudioPlayer(StartedPlayingEventHandler, PausedPlayerEventHandler, StoppedPlayerEventHandler);
             PlayModeNotification = playModeNotification;
             PausedPlayerEvent = pausedPlayerEvent;
@@ -44,6 +46,7 @@ namespace AudioPlayerLib
             StoppedPlayerNotification = stoppedPlayerNotification;
             UpdateVisualizeNotification += updateVisualizeNotification;
             _audioVisualizer = new AudioVisualizer(progressBar, pictureBox, timer);
+            timer.Tick += UpdateVisualize;
         }
 
         // adds a new playlist from the given path
@@ -75,6 +78,7 @@ namespace AudioPlayerLib
         public void Stop()
         {
             _audioPlayer.StopSong();
+            _audioVisualizer.OnPauseEvent(this, null);
         }
 
         public void Play()
@@ -94,6 +98,7 @@ namespace AudioPlayerLib
         public void Pause()
         {
             _audioPlayer.PauseSong();
+            _audioVisualizer.OnPauseEvent(this, null);
         }
 
         // switches to previous song

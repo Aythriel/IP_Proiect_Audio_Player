@@ -27,7 +27,7 @@ namespace AudioPlayerLib
         private ProgressBar _progBar = null;
         private PictureBox _picBox = null;
         private bool _paused = false;
-
+        private string _currentSong = null;
         public AudioVisualizer(ProgressBar progBar, PictureBox picBox, Timer visEventTimer) 
         {
             if (null == progBar || null == picBox || null == visEventTimer)
@@ -48,10 +48,18 @@ namespace AudioPlayerLib
         {
             if (null == file)
                 throw new NullReferenceException("Visualizer can't generate image for null AudioFile reference");
-            _visEventTimer.Enabled = false;
-            //CreateCurrentSongImage also initializes the progress bar maximum; great design - I know
-            CreateCurrentSongImage(file);
-            _visEventTimer.Enabled = true;
+            if(file.Name!=this._currentSong) // do this to avoid double initialization on song playback or song unpause
+            {
+                _visEventTimer.Enabled = false;
+                if(null!=_picBox.Image)
+                    _picBox.Image.Dispose();
+                _progBar.Value = 0;
+                //CreateCurrentSongImage also initializes the progress bar maximum; great design - I know
+                CreateCurrentSongImage(file);
+                _visEventTimer.Enabled = true;
+                this._currentSong = file.Name;
+            }
+
         }
 
 

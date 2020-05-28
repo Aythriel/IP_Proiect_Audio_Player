@@ -7,7 +7,7 @@ using static AudioPlayerLib.MusicPlayer;
 
 namespace AudioPlayerLib
 {
-    class PlayModeEventArgs
+    public class PlayModeEventArgs
     {
 
         public readonly PlayMode _type;

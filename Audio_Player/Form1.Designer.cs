@@ -40,14 +40,15 @@
             this.btnPrevSong = new System.Windows.Forms.Button();
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCurrentlyPlaying = new System.Windows.Forms.Label();
             this.btnAddPlaylist = new System.Windows.Forms.Button();
             this.btnRemoveSelected = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.pBar1 = new System.Windows.Forms.ProgressBar();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timerVisUpdate = new System.Windows.Forms.Timer(this.components);
+            this.progBarSong = new System.Windows.Forms.ProgressBar();
+            this.picBoxVisualizations = new System.Windows.Forms.PictureBox();
+            this.btnStop = new System.Windows.Forms.Button();
             this.gbConsole.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxVisualizations)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddSongs
@@ -58,6 +59,7 @@
             this.btnAddSongs.TabIndex = 0;
             this.btnAddSongs.Text = "Add Songs";
             this.btnAddSongs.UseVisualStyleBackColor = true;
+            this.btnAddSongs.Click += new System.EventHandler(this.btnAddSongs_Click);
             // 
             // listBoxSongs
             // 
@@ -70,6 +72,7 @@
             // 
             // gbConsole
             // 
+            this.gbConsole.Controls.Add(this.btnStop);
             this.gbConsole.Controls.Add(this.cbAutoplay);
             this.gbConsole.Controls.Add(this.btnPause);
             this.gbConsole.Controls.Add(this.cbShuffle);
@@ -149,6 +152,7 @@
             this.btnAbout.TabIndex = 6;
             this.btnAbout.Text = "About";
             this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // btnHelp
             // 
@@ -159,15 +163,14 @@
             this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lblCurrentlyPlaying
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 393);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Label: Currently playing";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lblCurrentlyPlaying.AutoSize = true;
+            this.lblCurrentlyPlaying.Location = new System.Drawing.Point(23, 393);
+            this.lblCurrentlyPlaying.Name = "lblCurrentlyPlaying";
+            this.lblCurrentlyPlaying.Size = new System.Drawing.Size(116, 13);
+            this.lblCurrentlyPlaying.TabIndex = 8;
+            this.lblCurrentlyPlaying.Text = "Label: Currently playing";
             // 
             // btnAddPlaylist
             // 
@@ -177,6 +180,7 @@
             this.btnAddPlaylist.TabIndex = 10;
             this.btnAddPlaylist.Text = "New Playlist";
             this.btnAddPlaylist.UseVisualStyleBackColor = true;
+            this.btnAddPlaylist.Click += new System.EventHandler(this.btnAddPlaylist_Click);
             // 
             // btnRemoveSelected
             // 
@@ -186,37 +190,43 @@
             this.btnRemoveSelected.TabIndex = 11;
             this.btnRemoveSelected.Text = "Remove Selected";
             this.btnRemoveSelected.UseVisualStyleBackColor = true;
+            this.btnRemoveSelected.Click += new System.EventHandler(this.btnRemoveSelected_Click);
             // 
-            // timer1
+            // progBarSong
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.progBarSong.Location = new System.Drawing.Point(26, 409);
+            this.progBarSong.Name = "progBarSong";
+            this.progBarSong.Size = new System.Drawing.Size(560, 48);
+            this.progBarSong.TabIndex = 15;
             // 
-            // pBar1
+            // picBoxVisualizations
             // 
-            this.pBar1.Location = new System.Drawing.Point(26, 409);
-            this.pBar1.Name = "pBar1";
-            this.pBar1.Size = new System.Drawing.Size(560, 48);
-            this.pBar1.TabIndex = 15;
+            this.picBoxVisualizations.Location = new System.Drawing.Point(26, 51);
+            this.picBoxVisualizations.Name = "picBoxVisualizations";
+            this.picBoxVisualizations.Size = new System.Drawing.Size(560, 299);
+            this.picBoxVisualizations.TabIndex = 16;
+            this.picBoxVisualizations.TabStop = false;
             // 
-            // pictureBox1
+            // btnStop
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(26, 51);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(560, 299);
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.btnStop.Location = new System.Drawing.Point(106, 20);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(75, 23);
+            this.btnStop.TabIndex = 6;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 599);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.pBar1);
+            this.Controls.Add(this.picBoxVisualizations);
+            this.Controls.Add(this.progBarSong);
             this.Controls.Add(this.btnRemoveSelected);
             this.Controls.Add(this.btnAddPlaylist);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblCurrentlyPlaying);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.gbConsole);
@@ -226,7 +236,7 @@
             this.Text = "Form1";
             this.gbConsole.ResumeLayout(false);
             this.gbConsole.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxVisualizations)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,14 +253,15 @@
         private System.Windows.Forms.Button btnPrevSong;
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Button btnHelp;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCurrentlyPlaying;
         private System.Windows.Forms.CheckBox cbAutoplay;
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnAddPlaylist;
         private System.Windows.Forms.Button btnRemoveSelected;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ProgressBar pBar1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timerVisUpdate;
+        private System.Windows.Forms.ProgressBar progBarSong;
+        private System.Windows.Forms.PictureBox picBoxVisualizations;
+        private System.Windows.Forms.Button btnStop;
     }
 }
 

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace AudioPlayerLib
 {
@@ -19,8 +20,14 @@ namespace AudioPlayerLib
         private static Playlist _instance;
 
         private List<AudioFile> _songs;
+        private ListBox _listBoxSongs;
 
         public int Size { get { return _songs.Count; } }
+
+        public void setControl(ListBox listBoxSongs)
+        {
+            this._listBoxSongs = listBoxSongs;
+        }
 
         private Playlist()
         {
@@ -50,8 +57,10 @@ namespace AudioPlayerLib
                     if (AudioFile.AcceptsFormat(path))
                     {
                         _songs.Add(new AudioFile(path));
+                        _listBoxSongs.Items.Add(path);
                         count++;
                     }
+                    
                 }
                 else
                 {
@@ -62,9 +71,11 @@ namespace AudioPlayerLib
                         if (AudioFile.AcceptsFormat(file))
                         {
                             _songs.Add(new AudioFile(file));
+                            _listBoxSongs.Items.Add(file);
                             count++;
                         }
                     }
+
                 }
             }
 
@@ -79,6 +90,7 @@ namespace AudioPlayerLib
                 return false;
 
             _songs.RemoveAt(idx);
+            _listBoxSongs.Items.RemoveAt(idx);
             return true;
         }
 
@@ -96,6 +108,7 @@ namespace AudioPlayerLib
         public void Clear()
         {
             _songs.Clear();
+            _listBoxSongs.Items.Clear();
         }
     }
 }
