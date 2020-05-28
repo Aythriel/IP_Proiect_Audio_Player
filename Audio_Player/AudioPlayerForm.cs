@@ -172,7 +172,7 @@ namespace Audio_Player
         private void disableAllControls()
         {
             btnPlay.Enabled = false;
-            btnPause.Enabled = false;
+            btnPause.Enabled = false; 
             btnNext.Enabled = false;
             btnPrevSong.Enabled = false;
             cbShuffle.Checked = false;
